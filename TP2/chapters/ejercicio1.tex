@@ -1,1 +1,48 @@
 \chapter{Ejercicio 1}
+
+\textbf{Ejercicio 1}. Dada la secuencia de senales {$\varphi_{n} (t)=e^{j(n\omega)t}: n \in \mathbb{Z}$}, con $T = \dfrac{2\pi}{\omega}$. Demostrar:
+
+\textbf{A)} El periodo fundamental de la senal $\varphi_{n}(t)$ es $T_n=\dfrac{2\pi}{n\omega}$. ¿Por qué se puede afirmar que la suma entre estas señales está bien definida $\varphi_{n}(t)$?
+
+\textbf{i.} Lo primero que realizaremos seria corroborar que $T_n$ es un periodo.
+
+$$\varphi_{n}(t+T_n)=\varphi_{n}(t)$$
+
+$$e^{jn\omega(t+T_n)}=e^{jn\omega(t)}$$
+
+$$e^{jn\omega(t+\dfrac{2\pi}{n\omega})}=e^{jn\omega(t)}$$
+
+$$e^{jn\omega(t)+jn\omega\dfrac{2\pi}{n\omega}}=e^{jn\omega(t)}$$
+
+$$e^{jn\omega(t)+j2\pi}=e^{jn\omega(t)}$$
+
+$$e^{jn\omega(t)} \cdot e^{j2\pi} = e^{jn\omega(t)}$$
+
+$$e^{jn\omega(t)} \cdot 1 = e^{jn\omega(t)}$$
+
+$$e^{jn\omega(t)} = e^{jn\omega(t)}$$
+
+\textbf{ii.} Para ver que $T_n$ es el periodo fundamental, suponemos que exisite un $T'>0$ con $T'<T_n$, tal que.
+
+$$\varphi_n(t+T')=\varphi_n(t)$$
+
+Entonces $e^{jn\omega T'} = 1$, por lo que existe $k \in \mathbb{Z}$ tal que
+
+$$n\omega T'= 2\pi k$$
+
+Despejando $n\omega$
+
+$$T'=\dfrac{2\pi k}{n\omega}$$
+
+Donde si $k=0$ entonces $T'=0$, lo cual contradic lo que postulamos al principio que $T'>0$
+
+Si $|k| \ge 1$, entonces
+
+$$T' \ge \dfrac{2\pi}{|n|\omega} = T_{|n|}$$
+
+Lo cual contradice que $T'<T_n$. Por lo tanto no existe $T'\in(0,T_n)$ que sea periodo.
+
+\textbf{iii)} Para decir que la suma entre senales esta bien definida por $\varphi_n(t)$
+
+
+
