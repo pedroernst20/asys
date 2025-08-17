@@ -447,5 +447,20 @@ $$v(t) = (e^{-t} - e^{-2t}) u(t) $$
 
 $$\int_{-\infty}^{t} v(t) = y(t) $$
 
-$$\int_{-\infty}^{t} v(t) = $$
+$$\int_{-\infty}^{t} v(t) = \int_{0}^{t} (e^{-\tau} - e^{-2\tau}) d\tau $$
 
+$$\int_{-\infty}^{t} v(t) = \int_{0}^{t} e^-{-\tau} d\tau - \int_{0}^{t} e^{-2\tau} d\tau $$ 
+
+$$\int_{-\infty}^{t} v(t) = -e^{-\tau}\bigg\rvert_{0}^{t} - (-\dfrac{1}{2} e^{-2\tau} \bigg\rvert_{0}^{t}) $$
+
+$$\int_{-\infty}^{t} v(t) = -(e^{-t} - 1) - (-\dfrac{1}{2} e^{-2t} + \dfrac{1}{2}) $$
+
+$$\int_{-\infty}^{t} v(t) = 1 - e^{-t} + \dfrac{1}{2} e^{-2t} - \dfrac{1}{2}$$
+
+$$\int_{-\infty}^{t} v(t) = \dfrac{1}{2} - e^{-t} + \dfrac{1}{2} e^{-2t}$$
+
+Su forma causal
+
+$$\int_{-\infty}^{t} v(t) = u(t) [\dfrac{1}{2} - e^{-2t} + \dfrac{1}{2} e^{-2t}]$$
+
+Por lo cual se verifica todo lo calculado anteriormente
