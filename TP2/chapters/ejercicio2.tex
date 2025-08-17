@@ -463,4 +463,578 @@ Su forma causal
 
 $$\int_{-\infty}^{t} v(t) = u(t) [\dfrac{1}{2} - e^{-2t} + \dfrac{1}{2} e^{-2t}]$$
 
-Por lo cual se verifica todo lo calculado anteriormente
+Por lo cual se verifica todo lo calculado anteriormente.
+
+\section{Actividad 2}
+
+\subsection{A}
+
+\subsection*{RC (serie) --- entrada $x(t) = v(t)$, salida $y(t) = i(t)$}
+
+De la Ley de Voltajes de Kirchhoff y la relación del capacitor:
+
+\[
+v(t) = R i(t) + v_C(t), 
+\qquad 
+i(t) = C \, v_C'(t) 
+\;\;\;\Rightarrow\;\;\;
+v_C'(t) = \frac{1}{C} y(t).
+\]
+
+La ecuación diferencial queda:
+\[
+y'(t) + \frac{1}{RC}\,y(t) = \frac{1}{R}\,x'(t).
+\]
+
+\subsection*{RLC (serie) --- entrada $x(t) = v(t)$, salida $y(t) = i(t)$}
+
+De la Ley de Voltajes de Kirchhoff y la relación de los elementos (RLC):
+
+\[
+x(t) = R\,i(t) + L\,i'(t) + v_C(t),
+\qquad 
+i(t) = C\,v_C'(t).
+\]
+
+La ecuación diferencial queda:
+\[
+y''(t) + \frac{R}{L}\,y'(t) + \frac{1}{LC}\,y(t) = \frac{1}{L}\,x'(t).
+\]
+
+% ------------------------------------------------------------
+\subsection{B}
+
+\textbf{Circuito RC}
+
+\textbf{Función de transferencia e impulso}
+
+\[
+H(s) = \frac{\tfrac{s}{R}}{s+\tfrac{1}{RC}}.
+\]
+
+\[
+h(t) = \mathscr{L}^{-1}\{H(s)\} 
+= \frac{1}{R}\Big[\delta(t)-\frac{1}{RC}e^{-t/(RC)}u(t)\Big].
+\]
+
+\textbf{Respuesta al escalón}
+
+Entrada:
+\[
+x(t)=u(t), \quad X(s)=\frac{1}{s}.
+\]
+
+\[
+Y(s) = H(s)\,X(s) 
+= \frac{\tfrac{s}{R}}{s+\tfrac{1}{RC}} \cdot \frac{1}{s}
+= \frac{1}{R}\cdot \frac{1}{s+\tfrac{1}{RC}}.
+\]
+
+\[
+y(t) = \frac{1}{R}\,e^{-t/(RC)}u(t).
+\]
+
+Verificación con convolución en tiempo:
+
+\begin{align*}
+v(t) &= \int_{0}^{t} h(\tau)\,d\tau \\
+     &= \frac{1}{R}\left( \int_{0}^{t}\delta(\tau)\,d\tau 
+     - \frac{1}{RC}\int_{0}^{t} e^{-\tau/(RC)}\,d\tau \right) \\
+     &= \frac{1}{R}\left(1 - \big(1-e^{-t/(RC)}\big)\right) \\
+     &= \frac{1}{R}\,e^{-t/(RC)}u(t).
+\end{align*}
+
+\textbf{Respuesta a la rampa}
+
+Entrada:
+\[
+x(t)=t\,u(t), \quad X(s)=\frac{1}{s^2}.
+\]
+
+\[
+Y(s) = H(s)\,X(s) 
+= \frac{\tfrac{s}{R}}{s+\tfrac{1}{RC}} \cdot \frac{1}{s^2}
+= \frac{1}{R}\,\frac{1}{s(s+\tfrac{1}{RC})}.
+\]
+
+Descomposición en fracciones simples:
+\[
+\frac{1}{s(s+\tfrac{1}{RC})} = \frac{RC}{s} - \frac{RC}{s+\tfrac{1}{RC}}.
+\]
+
+\[
+Y(s)=\frac{1}{R}\left(\frac{RC}{s}-\frac{RC}{s+\tfrac{1}{RC}}\right).
+\]
+
+\[
+y(t) = C\big(1-e^{-t/(RC)}\big)u(t).
+\]
+
+% ------------------------------------------------------------
+\textbf{Ciruito RLC}
+
+\textbf{Función de transferencia e impulso}
+
+\[
+H(s) = \frac{\tfrac{s}{L}}{s^2+\tfrac{R}{L}s+\tfrac{1}{LC}}
+= \frac{1}{L}\,\frac{s}{(s-s_1)(s-s_2)}
+\]
+
+Con
+
+\[
+s_{1,2} = \frac{-\tfrac{R}{L}\pm \sqrt{\left(\tfrac{R}{L}\right)^2-\tfrac{4}{LC}}}{2} ; 
+\quad s_1 \neq s_2
+\]
+
+Descomposición en fracciones simples:
+\[
+\frac{s}{(s-s_1)(s-s_2)}
+=\frac{s_1}{s_1-s_2}\cdot\frac{1}{s-s_1}
+-\frac{s_2}{s_1-s_2}\cdot\frac{1}{s-s_2}
+\]
+
+\[
+h(t)=\frac{1}{L}\left(\frac{s_1}{s_1-s_2}e^{s_1 t}
+-\frac{s_2}{s_1-s_2}e^{s_2 t}\right)u(t)
+\]
+
+\textbf{Respuesta al escalón}
+
+Entrada:
+\[
+x(t)=u(t), \quad X(s)=\frac{1}{s}.
+\]
+
+\[
+Y(s) = H(s)\,X(s) = \frac{1}{L}\cdot\frac{1}{(s-s_1)(s-s_2)}
+\]
+
+\[
+\frac{1}{(s-s_1)(s-s_2)} = \frac{1}{s_1-s_2}\left(\frac{1}{s-s_1}-\frac{1}{s-s_2}\right)
+\]
+
+\[
+Y(s) = \frac{1}{L(s_1-s_2)}\left(\frac{1}{s-s_1}-\frac{1}{s-s_2}\right)
+\]
+
+\[
+y(t) = \frac{1}{L(s_1-s_2)}\Big(e^{s_1 t}-e^{s_2 t}\Big)u(t)
+\]
+
+\textbf{Respuesta a la rampa}
+
+Entrada:
+\[
+x(t)=t\,u(t), \quad X(s)=\frac{1}{s^2}
+\]
+
+\[
+Y(s)=H(s)\,X(s)=\frac{1}{L}\cdot\frac{1}{s(s-s_1)(s-s_2)}
+\]
+
+Descomposición en fracciones simples:
+\[
+\frac{1}{s(s-s_1)(s-s_2)}=\frac{A}{s}+\frac{B}{s-s_1}+\frac{C}{s-s_2}
+\]
+
+Determinando coeficientes:
+\[
+A=\frac{1}{s_1 s_2}=LC \qquad
+B=\frac{1}{s_1(s_1-s_2)} \qquad
+C=\frac{1}{s_2(s_2-s_1)}
+\]
+
+\[
+Y(s)=\frac{1}{L}\left(\frac{LC}{s}+\frac{1}{s_1(s_1-s_2)}\frac{1}{s-s_1}+\frac{1}{s_2(s_2-s_1)}\frac{1}{s-s_2}\right)
+\]
+
+\[
+y(t)=C\,u(t)+\frac{1}{L}\cdot\frac{1}{s_1-s_2}\left(\frac{e^{s_1 t}}{s_1}-\frac{e^{s_2 t}}{s_2}\right)u(t)
+\]
+
+\textbf{Numéricamente}
+
+Si \(R=3,\ L=1,\ C=\tfrac{1}{2}\), entonces \(s_1=-1,\ s_2=-2\). Se obtiene:
+
+\[
+h(t)=(-e^{-t}+2e^{-2t})u(t)
+\]
+\[
+y(t)=(e^{-t}-e^{-2t})u(t)
+\]
+\[
+y(t)=\left(\tfrac{1}{2}-e^{-t}+\tfrac{1}{2}e^{-2t}\right)u(t)
+\]
+
+\subsection{C}
+
+\textbf{Circuit RC}
+
+\textbf{Datos:}
+\[
+H(s)=\frac{\tfrac{s}{R}}{s+\tfrac{1}{RC}},\qquad
+h(t)=\frac{1}{R}\Big[\delta(t)-\frac{1}{RC}e^{-t/(RC)}u(t)\Big]
+\]
+
+\textbf{Entrada escalón:} \(x(t)=u(t)\), \(\;X(s)=\dfrac{1}{s}\)
+\[
+Y(s)=H(s)X(s)=\frac{1}{R}\cdot\frac{1}{s+\tfrac{1}{RC}}
+\;\Rightarrow\;
+y(t)=\frac{1}{R}e^{-t/(RC)}u(t)
+\]
+
+\textbf{TVI/TVF en \(s\):}
+\[
+\text{TVI:}\quad y(0^+)=\lim_{s\to\infty}\big[s\,Y(s)\big]
+=\lim_{s\to\infty}\frac{s}{R\,(s+\tfrac{1}{RC})}=\frac{1}{R}
+\]
+\[
+\text{TVF:}\quad y(\infty)=\lim_{s\to 0}\big[s\,Y(s)\big]
+=\lim_{s\to 0}\frac{s}{R\,(s+\tfrac{1}{RC})}=0
+\]
+
+\textbf{Verificación en \(t\):}
+\[
+y(0^+)=\frac{1}{R}e^{0}= \frac{1}{R},\qquad
+y(\infty)=\frac{1}{R}e^{-\infty}=0
+\]
+
+\textbf{Conclusiónes:}  
+Se comprobó que los resultados obtenidos con el TVI y el TVF en el dominio de Laplace coinciden con los límites directos de las soluciones en el dominio temporal.  
+- Para una \textbf{entrada escalón}, la corriente arranca en $\tfrac{1}{R}$ y decae a cero, mostrando que el capacitor bloquea el paso en estado estacionario (comportamiento de circuito abierto en DC).  
+- Para una \textbf{entrada rampa}, la salida arranca en cero y tiende a un valor constante $C$, reflejando la acumulación de carga en el capacitor y confirmando el rol de éste como integrador de señales de baja frecuencia.  
+
+\medskip
+
+\textbf{Entrada rampa:} \(x(t)=t\,u(t)\), \(\;X(s)=\dfrac{1}{s^2}\).
+\[
+Y(s)=H(s)X(s)=\frac{1}{R}\cdot\frac{1}{s\,(s+\tfrac{1}{RC})}
+=\frac{1}{R}\!\left(\frac{RC}{s}-\frac{RC}{s+\tfrac{1}{RC}}\right)
+\]
+\[
+y(t)=\frac{1}{R}\big(RC\,u(t)-RC\,e^{-t/(RC)}u(t)\big)
+= C\big(1-e^{-t/(RC)}\big)u(t)
+\]
+
+\textbf{TVI/TVF en \(s\):}
+\[
+\text{TVI:}\quad y(0^+)=\lim_{s\to\infty}\big[s\,Y(s)\big]
+=\lim_{s\to\infty} C\Big(1-\frac{s}{s+\tfrac{1}{RC}}\Big)=0
+\]
+\[
+\text{TVF:}\quad y(\infty)=\lim_{s\to 0}\big[s\,Y(s)\big]
+=\lim_{s\to 0} C\Big(1-\frac{s}{s+\tfrac{1}{RC}}\Big)=C
+\]
+
+\textbf{Verificación en \(t\):}
+\[
+y(0^+)=C(1-1)=0,\qquad y(\infty)=C(1-0)=C.
+\]
+
+% ------------------------------------------------------------------
+
+\textbf{Circuito RLC}
+
+\textbf{Datos:}
+\[
+H(s)=\frac{\tfrac{s}{L}}{s^2+\tfrac{R}{L}s+\tfrac{1}{LC}}
+=\frac{1}{L}\,\frac{s}{(s-s_1)(s-s_2)}\qquad
+s_{1,2}=\frac{-\tfrac{R}{L}\pm\sqrt{\left(\tfrac{R}{L}\right)^2-\tfrac{4}{LC}}}{2}
+\]
+\[
+h(t)=\frac{1}{L}\left(\frac{s_1}{s_1-s_2}e^{s_1 t}
+-\frac{s_2}{s_1-s_2}e^{s_2 t}\right)u(t)
+\]
+(Suponemos estabilidad: \(\Re\{s_1\},\Re\{s_2\}<0\).)
+
+\textbf{Entrada escalón:} \(x(t)=u(t)\), \(\;X(s)=\dfrac{1}{s}\)
+\[
+Y(s)=\frac{1}{L}\cdot\frac{1}{(s-s_1)(s-s_2)}
+=\frac{1}{L(s_1-s_2)}\!\left(\frac{1}{s-s_1}-\frac{1}{s-s_2}\right)
+\]
+\[
+y(t)=\frac{1}{L(s_1-s_2)}\big(e^{s_1 t}-e^{s_2 t}\big)u(t)
+\]
+
+\textbf{TVI/TVF en \(s\):}
+\[
+\text{TVI:}\quad y(0^+)=\lim_{s\to\infty}\big[s\,Y(s)\big]
+=\lim_{s\to\infty}\frac{s}{L}\cdot\frac{1}{s^2+\tfrac{R}{L}s+\tfrac{1}{LC}}=0
+\]
+\[
+\text{TVF:}\quad y(\infty)=\lim_{s\to 0}\big[s\,Y(s)\big]
+=\lim_{s\to 0}\frac{s}{L}\cdot\frac{1}{(s-s_1)(s-s_2)}=0
+\]
+
+\textbf{Verificación en \(t\):}
+\[
+y(0^+)=\frac{1}{L(s_1-s_2)}(1-1)=0,\qquad
+y(\infty)=\frac{1}{L(s_1-s_2)}(0-0)=0.
+\]
+
+\medskip
+
+\textbf{Entrada rampa:} \(x(t)=t\,u(t)\), \(\;X(s)=\dfrac{1}{s^2}\)
+\[
+Y(s)=\frac{1}{L}\cdot\frac{1}{s\,(s-s_1)(s-s_2)}
+\]
+Reordenando:
+\[
+\frac{1}{s\,(s-s_1)(s-s_2)}=\frac{A}{s}+\frac{B}{s-s_1}+\frac{C}{s-s_2}
+\]
+\[
+A=\frac{1}{s_1 s_2}=LC\qquad
+B=\frac{1}{s_1(s_1-s_2)}\qquad
+C=\frac{1}{s_2(s_2-s_1)}
+\]
+Entonces
+\[
+Y(s)=\frac{1}{L}\left(\frac{LC}{s}+\frac{B}{s-s_1}+\frac{C}{s-s_2}\right)
+\;\Rightarrow\;
+y(t)=C\,u(t)+\frac{1}{L}\cdot\frac{1}{s_1-s_2}\!\left(\frac{e^{s_1 t}}{s_1}-\frac{e^{s_2 t}}{s_2}\right)\!u(t)
+\]
+
+\textbf{TVI/TVF en \(s\):}
+\[
+\text{TVI:}\quad y(0^+)=\lim_{s\to\infty}\big[s\,Y(s)\big]
+=\lim_{s\to\infty}\frac{s}{L}\cdot\frac{1}{s^3+\cdots}=0
+\]
+\[
+\text{TVF:}\quad y(\infty)=\lim_{s\to 0}\big[s\,Y(s)\big]
+=\frac{1}{L}\cdot\frac{1}{(0-s_1)(0-s_2)}=\frac{1}{L\,s_1 s_2}=C
+\]
+
+\textbf{Verificación en \(t\):}
+\[
+y(0^+)=C+\frac{1}{L}\cdot\frac{1}{s_1-s_2}\!\left(\frac{1}{s_1}-\frac{1}{s_2}\right)
+=C-\frac{1}{L}\cdot\frac{1}{s_1 s_2}=C-C=0
+\]
+\[
+y(\infty)=C+\frac{1}{L}\cdot\frac{1}{s_1-s_2}\!\left(\frac{0}{s_1}-\frac{0}{s_2}\right)=C.
+\]
+
+\textbf{Conclusiónes:}  
+También se verificó que los valores de TVI y TVF en el dominio $s$ coinciden con los obtenidos a partir de las expresiones en el tiempo.  
+- Para una \textbf{entrada escalón}, tanto el valor inicial como el final de la salida resultan nulos, lo que significa que, en régimen permanente, la corriente en el lazo desaparece (el capacitor se opone en DC y el inductor en régimen inicial).  
+- Para una \textbf{entrada rampa}, la salida comienza en cero y tiende al valor $C$, mostrando que la combinación $RLC$ termina limitando el crecimiento de la corriente y fijando un valor estacionario dependiente de la capacitancia.  
+
+\subsection{D}
+
+\textbf{Circuit RC}
+
+Partiendo de la ED del circuito RC en serie:
+
+\[
+y'(t) + \frac{1}{RC}\,y(t) = \frac{1}{R}\,x'(t).
+\]
+
+\textbf{Ecuación característica:}  
+Considerando la ecuación homogénea asociada (es decir, $x(t)=0$):
+
+\[
+y'(t) + \frac{1}{RC}\,y(t) = 0.
+\]
+
+La solución característica se obtiene de:
+
+\[
+s + \frac{1}{RC} = 0 
+\;\;\;\Rightarrow\;\;\; s = -\frac{1}{RC}.
+\]
+
+\textbf{Orden del sistema:}  
+La ecuación característica es un polinomio de primer grado en $s$.  
+Por lo tanto, el sistema tiene un único polo real negativo, y es un sistema de \textbf{primer orden}.  
+
+\textbf{Coeficiente de amortiguamiento $\xi$:}  
+El coeficiente de amortiguamiento $\xi$ se define a partir de la forma canónica de un sistema de \textbf{segundo orden}:
+
+\[
+s^2 + 2\xi \omega_n s + \omega_n^2 = 0,
+\]
+
+donde aparecen dos polos que pueden ser reales o complejos.  
+En el caso RC, como solo existe un polo, no es posible definir $\xi$.
+
+\textbf{Parámetro característico del sistema:}  
+En lugar de $\xi$, el RC queda caracterizado por su constante de tiempo:
+
+\[
+\tau = RC,
+\]
+
+la cual determina tanto la velocidad de respuesta como la localización del polo:
+
+\[
+s = -\frac{1}{\tau}.
+\]
+
+\textbf{Conclusión:}  
+El circuito RC es de primer orden, posee un único polo real negativo y se describe completamente mediante su constante de tiempo $RC$.  
+El coeficiente de amortiguamiento $\xi$ solo aplica en sistemas de segundo orden, por lo que no se puede definir para este caso.
+
+
+\bigskip
+
+\textbf{Circuito RLC}
+Partiendo de la ecuación diferencial normalizada obtenida:
+\[
+y''(t) + \frac{R}{L}\,y'(t) + \frac{1}{LC}\,y(t) \;=\; \frac{1}{L}\,x'(t),
+\]
+la ecuación característica es 
+\[
+s^{2} + \frac{R}{L}\,s + \frac{1}{LC} = 0.
+\]
+Comparando con la forma estándar de segundo orden
+\[
+s^{2} + 2\,\xi\,\omega_n\,s + \omega_n^{2} = 0,
+\]
+se identifica
+\[
+\omega_n \;=\; \frac{1}{\sqrt{LC}}, 
+\qquad
+2\,\xi\,\omega_n \;=\; \frac{R}{L}.
+\]
+Luego, el \textbf{coeficiente de amortiguamiento} resulta
+\[
+\boxed{\;\xi \;=\; \frac{R}{2}\,\sqrt{\frac{C}{L}}\;}
+\]
+
+\textbf{Clasificación según $\xi$:}
+\[
+\begin{array}{ll}
+\xi < 1 & \text{subamortiguado (polos complejos conjugados, }\Re\{s\}<0\text{)}\\[2pt]
+\xi = 1 & \text{críticamente amortiguado (polo doble real negativo)}\\[2pt]
+\xi > 1 & \text{sobreamortiguado (dos polos reales negativos distintos)}
+\end{array}
+\]
+
+\textbf{Numéricamente (como en A1/B):} si $R=3$, $L=1$, $C=\tfrac{1}{2}$:
+\[
+\xi \;=\; \frac{3}{2}\,\sqrt{\frac{1}{2}} \;\approx\; 1.0607 \;>\; 1
+\]
+lo cual coincide con el caso \emph{sobreamortiguado} y con los polos reales distintos $s_1=-1$, $s_2=-2$.
+
+\subsection{E}
+
+\textbf{Circuito RC}
+El circuito es de \textbf{primer orden}; por lo que no posee frecuencia natural \(\omega_n\) contrastando con el inciso anterior se deduce tal afirmación. 
+El parámetro característico es la constante de tiempo
+\[
+\tau = RC,
+\]
+
+\textbf{Interpretación de $1/\tau$ en un circuito RC.}
+En un sistema de primer orden (como RC) la ecuación característica es
+\[
+s+\frac{1}{RC}=0 \;\;\Rightarrow\;\; s=-\frac{1}{\tau},\quad \tau\equiv RC.
+\]
+Aquí no existe una “frecuencia natural” oscilatoria \(\omega_n\) (propia de sistemas de \emph{segundo orden}), porque sólo hay un modo exponencial real. 
+El parámetro \(\tfrac{1}{\tau}\) tiene unidades de s\(^{-1}\) y representa la \emph{tasa de decaimiento exponencial} (también llamada razón de amortiguamiento), es decir, cuán rápido desaparece el transitorio y pasa a ser estacionario.
+
+Físicamente, esto refleja que el capacitor se comporta como \emph{abierto} en régimen estacionario (DC): tras el transitorio de carga/descarga, \(i(t)\to 0\) y \(v_C(t)\to V\). 
+Por lo tanto, \(\tfrac{1}{\tau}\) no es una frecuencia de oscilación sino la distancia del polo al origen sobre el eje real negativo (la rapidez con la que el sistema “olvida” su estado inicial).
+
+
+\bigskip
+
+\textbf{Circuito RLC}
+Del inciso anterior podemos extraer que:
+
+\[
+\boxed{\;\omega_n^2=\frac{1}{LC}\;} \quad\Longrightarrow\quad
+\boxed{\;\omega_n=\frac{1}{\sqrt{LC}}\;}
+\]
+
+\textbf{Ejemplo numérico} (valores usados antes): si \(R=3\), \(L=1\), \(C=\tfrac{1}{2}\),
+\[
+\omega_n=\frac{1}{\sqrt{1\cdot \tfrac{1}{2}}}=\sqrt{2}\;\text{ rad/s}\;\approx 1.414\;\text{rad/s}
+\]
+
+\subsection{F}
+
+\subsection*{RC (serie)}
+
+\textbf{Partimos de la respuesta al impulso}
+\[
+h(t)=\frac{1}{R}\Big[\delta(t)-\frac{1}{RC}e^{-t/(RC)}u(t)\Big]
+\]
+
+\textbf{1) Transformada de Laplace de $h(t)$}
+\[
+H(s)=\mathscr{L}\{h(t)\}
+=\frac{1}{R}\Big[1-\frac{\tfrac{1}{RC}}{s+\tfrac{1}{RC}}\Big]
+=\frac{1}{R}\cdot\frac{s}{\,s+\tfrac{1}{RC}\,}
+\]
+
+\textbf{2) Relación $Y(s)=H(s)X(s)$ y ecuación en $s$}
+\[
+Y(s)=H(s)X(s)\;\;\Longrightarrow\;\;
+\Big(s+\tfrac{1}{RC}\Big)Y(s)=\tfrac{1}{R}\,s\,X(s)
+\]
+
+\textbf{3) Volver al dominio del tiempo (ED)}
+Usando \(\mathscr{L}^{-1}\{sY(s)\}=y'(t)\) y \(\mathscr{L}^{-1}\{sX(s)\}=x'(t)\):
+\[
+y'(t)+\frac{1}{RC}\,y(t)=\frac{1}{R}\,x'(t)
+\]
+(Ecuación diferencial lineal de \textbf{primer orden} con coeficientes constantes.)
+
+\bigskip
+
+\textbf{Circuito RLC}
+
+\textbf{Partimos de la respuesta al impulso (raíces distintas $s_1\neq s_2$)}
+\[
+h(t)=\frac{1}{L}\left(\frac{s_1}{s_1-s_2}e^{s_1 t}
+-\frac{s_2}{s_1-s_2}e^{s_2 t}\right)u(t)
+\quad \Re\{s_1\},\Re\{s_2\}<0
+\]
+
+\textbf{1) Transformada de Laplace de $h(t)$}
+\[
+H(s)=\frac{1}{L}\left(\frac{s_1}{s_1-s_2}\frac{1}{s-s_1}
+-\frac{s_2}{s_1-s_2}\frac{1}{s-s_2}\right)
+=\frac{1}{L}\cdot\frac{s}{(s-s_1)(s-s_2)}
+\]
+
+\textbf{2) Relación $Y(s)=H(s)X(s)$ y ecuación en $s$}
+\[
+Y(s)=H(s)X(s)\;\;\Longrightarrow\;\;
+\big[(s-s_1)(s-s_2)\big]\,Y(s)=\frac{1}{L}\,s\,X(s)
+\]
+Expandiendo el denominador:
+\[
+(s-s_1)(s-s_2)=s^2-(s_1+s_2)s+s_1 s_2
+\]
+Por lo tanto:
+\[
+\Big(s^2-(s_1+s_2)s+s_1 s_2\Big)Y(s)=\frac{1}{L}\,s\,X(s)
+\]
+
+\textbf{3) Volver al dominio del tiempo (ED)}
+\[
+y''(t)-(s_1+s_2)\,y'(t)+s_1 s_2\,y(t)=\frac{1}{L}\,x'(t)
+\]
+Identificando con el circuito RLC (de la Actividad 1): 
+\[
+s_1+s_2=-\frac{R}{L},\qquad s_1 s_2=\frac{1}{LC}
+\]
+queda
+\[
+y''(t)+\frac{R}{L}\,y'(t)+\frac{1}{LC}\,y(t)=\frac{1}{L}\,x'(t),
+\]
+que es la ecuación diferencial lineal de \textbf{segundo orden} con coeficientes constantes.
+
+\medskip
+\textit{Observación (caso en que $s_1=s_2=-a$):} 
+Si $H(s)=\tfrac{1}{L}\,\tfrac{s}{(s+a)^2}$, entonces 
+\[
+h(t)=\frac{1}{L}\big(e^{-a t}-a\,t\,e^{-a t}\big)u(t),
+\]
+y el mismo procedimiento lleva a
+\[
+y''(t)+2a\,y'(t)+a^2\,y(t)=\frac{1}{L}\,x'(t),
+\]
+que coincide con la forma estándar al identificar \(a=\tfrac{R}{2L}\) y \(a^2=\tfrac{1}{LC}\).
