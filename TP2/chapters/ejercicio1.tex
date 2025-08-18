@@ -46,15 +46,17 @@ $$T' \ge \dfrac{2\pi}{|n|\omega} = T_{|n|}$$
 
 Lo cual contradice que $T'<T_n$. Por lo tanto no existe $T'\in(0,T_n)$ que sea periodo.
 
-\textbf{iii)} Para decir que la suma entre senales esta bien definida por $\varphi_n(t)$
+\textbf{iii.}
+
+Ahora bien podemos concluir que la suma $\sum_{n \in \mathbb{Z}} \phi_n(t)$ está bien definida porque todas las señales $\phi_n(t)$ son periódicas con un periodo común $T = \frac{2\pi}{\omega}$ (múltiplo entero de $T_n$). Esto garantiza que la superposición de señales mantenga la periodicidad global.
 
 \vspace{0.5cm}
 
 \subsection{B}
 
-\textbf{B)} Calcular \[E_n = (\phi_n(t), \phi_n(t))_T \quad \text{y} \quad (\phi_n(t), \phi_m(t))_T, \quad \forall n,m \in \mathbb{Z}.\]
+\textbf{B)} Calcular $E_n = (\phi_n(t), \phi_n(t))_T \quad \text{y} \quad (\phi_n(t), \phi_m(t))_T, \quad \forall n,m \in \mathbb{Z}$
 
-Definimos:
+Como primer paso definiremos
 \[
 \langle \varphi_n, \varphi_m \rangle_T = \frac{1}{T}\int_0^T \varphi_n(t)\overline{\varphi_m(t)}dt
 \]
@@ -75,7 +77,7 @@ Definimos:
 
 \subsection{C}
 
-\textbf{C)} La secuencia de señales \[\{ \phi_n(t) = e^{j(n\omega)t} : n \in \mathbb{Z} \}\] es base de Fourier.
+\textbf{C)} La secuencia de señales $\{ \phi_n(t) = e^{j(n\omega)t} : n \in \mathbb{Z} \}$ es base de Fourier.
 
 \textbf{Propiedades requeridas:}
 \begin{enumerate}[label=(\roman*)]
@@ -90,7 +92,7 @@ x(t) = \sum_{n=-\infty}^{\infty} C_n \varphi_n(t)
 
 \subsection{D}
 
-\textbf{D)} La secuencia de señales \[\{ \rho_n^0(t) = \cos(n\omega t) = \tfrac{1}{2}\phi_n(t) + \tfrac{1}{2}\overline{\phi_n(t)} : n \geq 0 \}\] es base de Fourier.
+\textbf{D)} La secuencia de señales $\{ \rho_n^0(t) = \cos(n\omega t) = \tfrac{1}{2}\phi_n(t) + \tfrac{1}{2}\overline{\phi_n(t)} : n \geq 0 \}$ es base de Fourier.
 
 \textbf{Relación con $\varphi_n(t)$:}
 \[
