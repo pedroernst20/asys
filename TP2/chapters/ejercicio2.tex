@@ -469,7 +469,7 @@ Por lo cual se verifica todo lo calculado anteriormente.
 
 \subsection{A}
 
-\subsection*{RC (serie) --- entrada $x(t) = v(t)$, salida $y(t) = i(t)$}
+\subsection*{Circuito RC}
 
 De la Ley de Voltajes de Kirchhoff y la relación del capacitor:
 
@@ -483,10 +483,60 @@ v_C'(t) = \frac{1}{C} y(t).
 
 La ecuación diferencial queda:
 \[
-y'(t) + \frac{1}{RC}\,y(t) = \frac{1}{R}\,x'(t).
+y'(t) + \frac{1}{RC}\,y(t) = \frac{1}{R}\,x'(t)
 \]
 
-\subsection*{RLC (serie) --- entrada $x(t) = v(t)$, salida $y(t) = i(t)$}
+\[
+  D y(t) + \dfrac{1}{RC} \, y(t) = \dfrac{1}{R} D x(t)
+\]
+
+\[
+  y(t) = \dfrac{1}{R} \, x(t) - D^{-1} \bigg( \dfrac{1}{RC} \, y(t) )
+\]
+
+\begin{figure}[H]
+  \centering
+  \begin{circuitikz}
+    \node at (0,0) {$x(t)$};
+
+    \draw (0.5,0) -- (2.5,0);
+    \draw[->] (2.5,0) -- (2.5,-1);
+
+    \draw (2,-1) rectangle (3,-2);
+
+    \node at (2.5, -1.5) {$\dfrac{1}{R}$};
+
+    \draw[->] (2.5,-2) -- (2.5,-2.5);\
+
+    \draw (2.5,-2.75) circle (0.25cm);
+
+    \node at (2.5, -2.75) {$-$};
+
+    \draw (2.75, -2.75) -- (4, -2.75);
+
+    \draw[->] (4,-2.75) -- (5, -2.75);
+    \node at (5, -2.3) {$y(t)$};
+
+    \draw (4, -2.75) -- (4, -4);
+    \draw[->] (4, -4) -- (3, -4);
+
+    \draw (2, -3.5) rectangle (3, -4.5);
+
+    \node[scale=0.8] at (2.5, -4) {$\dfrac{1}{RC}$};
+
+    \draw (2, -4) -- (0, -4);
+    \draw (0, -4) -- (0, -2.75);
+    \draw[->] (0,-2.75) -- (1, -2.75);
+
+    \draw (1,-2.25) rectangle (2, -3.25);
+
+    \node at (1.5, -2.75) {$\int$};
+
+    \draw[->] (2, -2.75) -- (2.25, -2.75);
+  \end{circuitikz}
+\end{figure}
+
+\subsection*{Circuito RLC}
 
 De la Ley de Voltajes de Kirchhoff y la relación de los elementos (RLC):
 
@@ -500,6 +550,49 @@ La ecuación diferencial queda:
 \[
 y''(t) + \frac{R}{L}\,y'(t) + \frac{1}{LC}\,y(t) = \frac{1}{L}\,x'(t).
 \]
+
+\begin{figure}[H]
+  \centering
+  \begin{circuitikz}
+    \node at (0,0) {$x(t)$};
+
+    \draw (0.5,0) -- (2.5,0);
+    \draw[->] (2.5,0) -- (2.5,-1);
+
+    \draw (2,-1) rectangle (3,-2);
+
+    \node at (2.5, -1.5) {$\dfrac{1}{R}$};
+
+    \draw[->] (2.5,-2) -- (2.5,-2.5);\
+
+    \draw (2.5,-2.75) circle (0.25cm);
+
+    \node at (2.5, -2.75) {$-$};
+
+    \draw (2.75, -2.75) -- (4, -2.75);
+
+    \draw[->] (4,-2.75) -- (5, -2.75);
+    \node at (5, -2.3) {$y(t)$};
+
+    \draw (4, -2.75) -- (4, -4);
+    \draw[->] (4, -4) -- (3, -4);
+
+    \draw (2, -3.5) rectangle (3, -4.5);
+
+    \node[scale=0.8] at (2.5, -4) {$\dfrac{1}{RC}$};
+
+    \draw (2, -4) -- (0, -4);
+    \draw (0, -4) -- (0, -2.75);
+    \draw[->] (0,-2.75) -- (1, -2.75);
+
+    \draw (1,-2.25) rectangle (2, -3.25);
+
+    \node at (1.5, -2.75) {$\int$};
+
+    \draw[->] (2, -2.75) -- (2.25, -2.75);
+  \end{circuitikz}
+\end{figure}
+
 
 % ------------------------------------------------------------
 \subsection{B}
