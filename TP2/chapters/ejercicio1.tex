@@ -1,6 +1,10 @@
 \chapter{Ejercicio 1}
 
-\textbf{Ejercicio 1}. Dada la secuencia de senales {$\varphi_{n} (t)=e^{j(n\omega)t}: n \in \mathbb{Z}$}, con $T = \dfrac{2\pi}{\omega}$. Demostrar:
+\section{Actividad 1}
+
+\textbf{Actividad 1}. Dada la secuencia de senales {$\varphi_{n} (t)=e^{j(n\omega)t}: n \in \mathbb{Z}$}, con $T = \dfrac{2\pi}{\omega}$. Demostrar:
+
+\subsection{A}
 
 \textbf{A)} El periodo fundamental de la senal $\varphi_{n}(t)$ es $T_n=\dfrac{2\pi}{n\omega}$. ¿Por qué se puede afirmar que la suma entre estas señales está bien definida $\varphi_{n}(t)$?
 
@@ -44,5 +48,81 @@ Lo cual contradice que $T'<T_n$. Por lo tanto no existe $T'\in(0,T_n)$ que sea p
 
 \textbf{iii)} Para decir que la suma entre senales esta bien definida por $\varphi_n(t)$
 
+\vspace{0.5cm}
 
+\subsection{B}
 
+\textbf{B)} Calcular \[E_n = (\phi_n(t), \phi_n(t))_T \quad \text{y} \quad (\phi_n(t), \phi_m(t))_T, \quad \forall n,m \in \mathbb{Z}.\]
+
+Definimos:
+\[
+\langle \varphi_n, \varphi_m \rangle_T = \frac{1}{T}\int_0^T \varphi_n(t)\overline{\varphi_m(t)}dt
+\]
+
+\textbf{Caso 1: $n = m$}
+\begin{align*}
+\langle \varphi_n, \varphi_n \rangle_T &= \frac{1}{T}\int_0^T e^{jn\omega t}e^{-jn\omega t}dt \\
+&= \frac{1}{T}\int_0^T 1\,dt = 1 \quad \forall n
+\end{align*}
+
+\textbf{Caso 2: $n \neq m$}
+\begin{align*}
+\langle \varphi_n, \varphi_m \rangle_T &= \frac{1}{T}\int_0^T e^{j(n-m)\omega t}dt \\
+&= \left.\frac{e^{j(n-m)\omega t}}{j(n-m)\omega T}\right|_0^T = 0 \quad \text{(por periodicidad)}
+\end{align*}
+
+\vspace{0.5cm}
+
+\subsection{C}
+
+\textbf{C)} La secuencia de señales \[\{ \phi_n(t) = e^{j(n\omega)t} : n \in \mathbb{Z} \}\] es base de Fourier.
+
+\textbf{Propiedades requeridas:}
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Ortogonalidad}: $\langle \varphi_n, \varphi_m \rangle_T = \delta_{nm}$ (demostrado en B)
+\item \textbf{Completitud}: Cualquier señal $x(t)$ periódica puede expresarse como:
+\[
+x(t) = \sum_{n=-\infty}^{\infty} C_n \varphi_n(t)
+\]
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\subsection{D}
+
+\textbf{D)} La secuencia de señales \[\{ \rho_n^0(t) = \cos(n\omega t) = \tfrac{1}{2}\phi_n(t) + \tfrac{1}{2}\overline{\phi_n(t)} : n \geq 0 \}\] es base de Fourier.
+
+\textbf{Relación con $\varphi_n(t)$:}
+\[
+\cos(n\omega t) = \frac{1}{2}\varphi_n(t) + \frac{1}{2}\varphi_{-n}(t)
+\]
+
+\textbf{Ortogonalidad:}
+\[
+\langle \rho_n^0, \rho_m^0 \rangle_T = 
+\begin{cases}
+1 & n = m = 0 \\
+\frac{1}{2} & n = m \neq 0 \\
+0 & n \neq m
+\end{cases}
+\]
+
+\vspace{0.5cm}
+
+\subsection{E}
+
+\textbf{E)} La secuencia de señales \[\{ \rho_n^1(t) = \sin(n\omega t) = \tfrac{1}{2j}\phi_n(t) - \tfrac{1}{2j}\overline{\phi_n(t)} : n > 0 \}\] es base de Fourier.
+
+\textbf{Relación con $\varphi_n(t)$:}
+\[
+\sin(n\omega t) = \frac{1}{2j}\varphi_n(t) - \frac{1}{2j}\varphi_{-n}(t)
+\]
+
+\textbf{Ortogonalidad:}
+\[
+\langle \rho_n^1, \rho_m^1 \rangle_T = 
+\begin{cases}
+\frac{1}{2} & n = m \\
+0 & n \neq m
+\end{cases}
+\]
