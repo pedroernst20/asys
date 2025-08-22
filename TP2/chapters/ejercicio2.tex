@@ -559,6 +559,8 @@ $$y(t) = D^{-1} \bigg[\dfrac{1}{L} \, x(t) - \dfrac{R}{L} \, y(t)\bigg] - D^{-2}
 
 $$y(t) = D^{-1} \bigg[\dfrac{1}{L} \, x(t) - \dfrac{R}{L} \, y(t) - D^{-1} \bigg(\dfrac{1}{LC} y(t) \bigg)  \bigg] $$
 
+$$-y(t) = D^{-1} \bigg[-\dfrac{1}{L} \, x(t) + \dfrac{R}{L} \, y(t) + D^{-1} \bigg(\dfrac{1}{LC} y(t) \bigg)  \bigg]$$
+
 \begin{figure}[H]
   \centering
   \begin{circuitikz}
@@ -569,13 +571,13 @@ $$y(t) = D^{-1} \bigg[\dfrac{1}{L} \, x(t) - \dfrac{R}{L} \, y(t) - D^{-1} \bigg
 
     \draw (2,-1) rectangle (3,-2);
 
-    \node at (2.5, -1.5) {$\dfrac{1}{L}$};
+    \node at (2.5, -1.5) {$-\dfrac{1}{L}$};
 
     \draw[->] (2.5,-2) -- (2.5,-2.5);
 
     \draw (2.5,-2.75) circle (0.25cm);
 
-    \node at (2.5, -2.75) {$-$};
+    \node at (2.5, -2.75) {$+$};
 
     \draw (2.75, -2.75) -- (3.25, -2.75);
 
@@ -586,7 +588,7 @@ $$y(t) = D^{-1} \bigg[\dfrac{1}{L} \, x(t) - \dfrac{R}{L} \, y(t) - D^{-1} \bigg
     \draw (4.25, -2.75) -- (5, -2.75);
 
     \draw[->] (5,-2.75) -- (5.5, -2.75);
-    \node at (5.5, -2.3) {$y(t)$};
+    \node at (7.3, -2.3) {$y(t)$};
 
     \draw (5, -2.75) -- (5, -5);
     \draw (5, -5) -- (0, -5);
@@ -612,6 +614,11 @@ $$y(t) = D^{-1} \bigg[\dfrac{1}{L} \, x(t) - \dfrac{R}{L} \, y(t) - D^{-1} \bigg
     \node at (1.5, -2.75) {$\int$};
 
     \draw[->] (2, -2.75) -- (2.25, -2.75);
+
+    \draw(5.5, -2.25) rectangle (6.5,-3.25);
+    \node at (6, -2.75) {$-$};
+
+    \draw[->] (6.5, -2.75) -- (7, -2.75);
   \end{circuitikz}
 \end{figure}
 
