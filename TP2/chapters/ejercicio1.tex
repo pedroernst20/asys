@@ -202,7 +202,13 @@ Ahora con el coeficiente podemos desarrollar a la se\~nal en su serie
 
 Desarrollando los primeros terminos de la serie obtenemos los siguiente
 
-\[x(t) = \dfrac{2}{pi} - \dfrac{4}{3pi} cos(2t) - \dfrac{4}{15\pi} cos(4t) - \dfrac{4}{35\pi} cos(6t)\]
+\[x(t) = \dfrac{2}{\pi} - \dfrac{4}{3\pi} cos(2t) - \dfrac{4}{15\pi} cos(4t) - \dfrac{4}{35\pi} cos(6t)\]
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{photos/graf_aprox_onda_completa.png}
+  \caption{Imagen de los primeros terminos de la serie}
+\end{figure}
 
 Para expresar la se\~nal en su segunda forma (la cual si es posible ya que la se\~nal con la que estamos trabajando SI es real) nos es de suma importancia saber si la se\~nal es tiene simetria, par, impar o no tiene simetria.
 
@@ -258,3 +264,98 @@ $$P_m = 0,499816 $$
 
 Verificando que el valor obtenido por ambas alternativas es el mismo, con una aproximacion mediante la serie del $99,962\percent$
 
+\subsection{Se\~nal sinusoidal rectificada de media onda}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{photos/onda_media.png}
+\end{figure}
+
+$$C_n = \dfrac{1}{T} \int_{0}^{T} x(t) e^{-jn\omega_0t} dt$$
+
+$$C_n = \dfrac{1}{2\pi} \int_{0}^{\pi} sen(t) e^{-jn\omega t} dt + \int_{\pi}^{2\pi} sen(t) e^{-jn\omega t} dt $$
+
+En el grafico de la funci\'on se puede observar que solamente existe entre los valores $0$ y $\pi$ en cambio entre $\pi$ y $2\pi$ vale 0, por ende integrarlo vale 0.
+
+$$C_n = \dfrac{1}{2\pi} \int_{0}^{\pi} \bigg(\dfrac{e^{jt} - e^{-jt}}{2j} \bigg) e^{-jnt} dt $$
+
+$$C_n = \dfrac{1}{j4\pi} \bigg[\int_{0}^{\pi} e^{jt(1-n)} dt - \int_{0}^{\pi} e^{-jt(1+n)} dt \bigg] $$
+
+$$C_n = \dfrac{1}{j4\pi} \bigg[\dfrac{e^{jt(1-n)}}{j(1-n)} \bigg\rvert_{0}^{\pi} - \dfrac{e^{-jt(1+n)}}{-j(1+n)} \bigg\rvert_{0}^{\pi} \bigg] $$
+
+$$C_n = \dfrac{1}{j4\pi} \bigg[\dfrac{1}{j} \dfrac{e^{j\pi(1-n)}-1}{(1-n)} + \dfrac{e^{-j\pi(1+n)}-1}{(1+n  )} \bigg] $$
+
+$$e^{j\pi(1-n)} = e^{j\pi} e^{-jn\pi} = -(-1)^n $$
+
+$$e^{-j\pi(1+n)} = e^{-j\pi} e^{-jn\pi} = -(-1)^n $$
+
+$$C_n = -\dfrac{1}{4\pi} \bigg[\dfrac{-((-1)^n + 1)}{1-n} + \dfrac{-((-1)^n + 1)}{1+n} \bigg] $$
+
+$$C_n = \dfrac{(-1)^n + 1}{4\pi} \bigg(\dfrac{1}{1-n} + \dfrac{1}{1+n} \bigg) $$
+
+$$\dfrac{1}{1-n} + \dfrac{1}{1+n} = \dfrac{-2}{(n^2-1)} $$
+
+$$C_n = -\dfrac{(-1)^n + 1}{2\pi(n^2-1)} $$
+
+Para todo n impar $C_n = 0$ excepto en $\pm 1$, en $n=1$
+
+$$C_1 = \dfrac{1}{2\pi} \int_{0}^{\pi} \bigg(\dfrac{e^{jt} - e^{-jt}}{2j} \bigg) e^{-jt} dt $$
+
+$$C_1 = \dfrac{1}{j4\pi} \int_{0}^{\pi} \bigg(1- e^{-2jt} \bigg) dt $$
+
+$$C_1 = \dfrac{1}{j4\pi} \bigg[\pi + \dfrac{e^{-2j\pi} - 1}{2j} \bigg] $$
+
+$$C_1 = -\dfrac{j}{4} $$
+
+Para el caso de $n=-1$
+
+$$C_{-1} = \dfrac{1}{2\pi} \int_{0}^{\pi} \bigg(\dfrac{e^{jt} - e^{-jt}}{2j} \bigg) e^{jt} dt $$
+
+$$C_{-1} = \dfrac{1}{j4\pi} \int_{0}^{\pi} \bigg(e^{2jt} - 1 \bigg) dt$$
+
+$$C_{-1} = \dfrac{1}{j4\pi} \bigg[\bigg(\dfrac{e^{2jt}}{2j} - t \bigg)\bigg\rvert_{0}^{\pi} \bigg]$$
+
+$$C_{-1} = \bigg[\dfrac{e^{2jt}}{8\pi}\bigg\rvert_{0}^{\pi} \bigg] - \bigg[\dfrac{-t}{j4t}\bigg\rvert_{0}^{\pi} \bigg] $$
+
+$$C_{-1} = 0 - \dfrac{1}{j4} $$
+
+$$C_{-1} = \dfrac{j}{4} $$
+
+$$x(t) = $$
+
+Ahora para el calculo de los coeficientess $a_n$ y $b_n$ simplemente debemos conocer la matriz de
+cambio de base la cual es $a_0 = C_0$ , $a_n = 2Re(C_n)$ , $b_n = -2Im(C_n)$.
+
+\[
+a_0 = \frac{1}{\pi}
+\]
+
+\[
+a_n =
+\begin{cases}
+0 & \forall \, n \text{ impar} \\
+\dfrac{2}{\pi(1-n^2)} & \forall \, n \text{ par}
+\end{cases}
+\]
+
+\[
+b_n =
+\begin{cases}
+\dfrac{1}{2} & n = 1 \\
+0 & \forall \, n > 1
+\end{cases}
+\]
+
+Ahora podemos escribir a $x(t)$ desarrollando los primeros valores de la serie
+
+$$x(t) = \dfrac{1}{\pi} + \dfrac{1}{2}sen(t) + \dfrac{2}{\pi} \bigg[-\dfrac{1}{3} cos(2t) - \dfrac{1}{15} cos(4t) - \dfrac{1}{35} cos(6t)\bigg] $$
+
+Procederemos a calcular la potencia media
+
+$$P_m = \dfrac{1}{T} \int_{<T>} x(t) dt $$
+
+$$P_m = \dfrac{1}{2\pi} \int_{0}^{\pi} sen(t)^2 dt $$
+
+$$P_m = \dfrac{1}{2\pi} \cdot \dfrac{\pi}{2} $$
+
+$$P_m = \dfrac{1}{4}$$
