@@ -2,13 +2,13 @@
 
 \section{Actividad 1}
 
-\textbf{Actividad 1}. Dada la secuencia de senales {$\phi_{n} (t)=e^{j(n\omega)t}: n \in \mathbb{Z}$}, con $T = \dfrac{2\pi}{\omega}$. Demostrar:
+\textbf{Actividad 1}. Dada la secuencia de se\~nales {$\phi_{n} (t)=e^{j(n\omega)t}: n \in \mathbb{Z}$}, con $T = \dfrac{2\pi}{\omega}$. Demostrar:
 
 \subsection{A}
 
-\textbf{A)} El periodo fundamental de la senal $\phi_{n}(t)$ es $T_n=\dfrac{2\pi}{n\omega}$. ¿Por qué se puede afirmar que la suma entre estas señales está bien definida $\phi_{n}(t)$?
+\textbf{A)} El per\'iodo fundamental de la se\~nal $\phi_{n}(t)$ es $T_n=\dfrac{2\pi}{n\omega}$. ¿Por qué se puede afirmar que la suma entre \'estas señales está bien definida $\phi_{n}(t)$?
 
-\textbf{i.} Lo primero que realizaremos seria corroborar que $T_n$ es un periodo.
+\textbf{i.} Lo primero que realizaremos ser\'a corroborar que $T_n$ es un per\'iodo.
 
 $$\phi_{n}(t+T_n)=\phi_{n}(t)$$
 
@@ -26,11 +26,9 @@ $$e^{jn\omega(t)} \cdot 1 = e^{jn\omega(t)}$$
 
 $$e^{jn\omega(t)} = e^{jn\omega(t)}$$
 
-\textbf{ii.} Para ver que $T_n$ es el periodo fundamental, suponemos que exisite un $T'>0$ con $T'<T_n$, tal que.
+\textbf{ii.} Para ver que $T_n$ es el per\'iodo fundamental, suponemos que existe un $T'>0$ con $T'<T_n$, tal que $\phi_n(t+T')=\phi_n(t)$
 
-$$\phi_n(t+T')=\phi_n(t)$$
-
-Entonces $e^{jn\omega T'} = 1$, por lo que existe $k \in \mathbb{Z}$ tal que
+Sabemos que $e^{jn\omega T'} = 1$, por lo que existe un $k \in \mathbb{Z}$ tal que
 
 $$n\omega T'= 2\pi k$$
 
@@ -38,17 +36,17 @@ Despejando $n\omega$
 
 $$T'=\dfrac{2\pi k}{n\omega}$$
 
-Donde si $k=0$ entonces $T'=0$, lo cual contradic lo que postulamos al principio que $T'>0$
+Donde si $k=0$ entonces $T'=0$, lo cual contradice lo que postulamos al principio que $T'>0$
 
 Si $|k| \ge 1$, entonces
 
 $$T' \ge \dfrac{2\pi}{|n|\omega} = T_{|n|}$$
 
-Lo cual contradice que $T'<T_n$. Por lo tanto no existe $T'\in(0,T_n)$ que sea periodo.
+Lo cual contradice que $T'<T_n$. Por lo tanto, no existe $T'\in(0,T_n)$ que sea per\'iodo.
 
 \textbf{iii.}
 
-Ahora bien podemos concluir que la suma $\sum_{n \in \mathbb{Z}} \phi_n(t)$ está bien definida porque todas las señales $\phi_n(t)$ son periódicas con un periodo común $T = \frac{2\pi}{\omega}$ (múltiplo entero de $T_n$). Esto garantiza que la superposición de señales mantenga la periodicidad global.
+Ahora bien, podemos concluir que la suma $\sum_{n \in \mathbb{Z}} \phi_n(t)$ está bien definida porque todas las señales $\phi_n(t)$ son peri\'odicas con un per\'iodo común $T = \frac{2\pi}{\omega}$ (múltiplo entero de $T_n$). Esto garantiza que la superposición de señales mantenga la periodicidad global.
 
 \vspace{0.5cm}
 
@@ -142,7 +140,7 @@ x(t) = \sum_{n=-\infty}^{\infty} C_n \phi_n(t)
 
 La se\~nal se trata de $x(t) = |sen(t)|$.
 
-Primero debemos tomar el periodo de la se\~nal, el cual es igual a $\pi$, para poder calcular el coeficiente $C_n$ el cual esta dado por la siguiente ecuacion.
+Primero debemos tomar el per\'iodo de la se\~nal, el cual es igual a $\pi$, para poder calcular el coeficiente $C_n$ el cual esta dado por la siguiente ecuaci\'on.
 
 $$C_n = \dfrac{1}{T} \int_{<T>} x(t) e^{-j(n\omega)t} dt$$
 
@@ -166,7 +164,7 @@ En este paso distribuimos
 
 $$C_n = \dfrac{1}{\pi} \int_{0}^{\pi} \bigg[\dfrac{e^{jt(1+2n)}}{j4} + \dfrac{e^{jt(1-2n)}}{j4} - \dfrac{e^{-jt(1-2n)}}{j4} - \dfrac{e^{-jt(1+2n)}}{j4}\bigg] dt $$
 
-Sacamos factor comun y ordenamos
+Sacamos factor com\'un y ordenamos
 
 $$C_n = \dfrac{1}{\pi} \int_{0}^{\pi} \dfrac{1}{j4} \bigg[e^{jt(1+2n)} - e^{-jt(1+2n)} - e^{-jt(1-2n)} + e^{jt(1-2n)}\bigg] dt $$
 
@@ -210,7 +208,7 @@ Desarrollando los primeros terminos de la serie obtenemos los siguiente
   \caption{Imagen de los primeros terminos de la serie}
 \end{figure}
 
-Para expresar la se\~nal en su segunda forma (la cual si es posible ya que la se\~nal con la que estamos trabajando SI es real) nos es de suma importancia saber si la se\~nal es tiene simetria, par, impar o no tiene simetria.
+Para expresar la se\~nal en su segunda forma (la cual si es posible ya que la se\~nal con la que estamos trabajando SI es real) nos es de suma importancia saber si la se\~nal tiene simetr\'ia, par, impar o no tiene simetr\'ia.
 
 Para que sea par debe cumplir con que $f(-t) = f(t)$
 
@@ -275,7 +273,7 @@ $$C_n = \dfrac{1}{T} \int_{0}^{T} x(t) e^{-jn\omega_0t} dt$$
 
 $$C_n = \dfrac{1}{2\pi} \int_{0}^{\pi} sen(t) e^{-jn\omega t} dt + \int_{\pi}^{2\pi} sen(t) e^{-jn\omega t} dt $$
 
-En el grafico de la funci\'on se puede observar que solamente existe entre los valores $0$ y $\pi$ en cambio entre $\pi$ y $2\pi$ vale 0, por ende integrarlo vale 0.
+En el gr\'afico de la funci\'on se puede observar que solamente existe entre los valores $0$ y $\pi$ en cambio entre $\pi$ y $2\pi$ vale 0, por ende integrarlo vale 0.
 
 $$C_n = \dfrac{1}{2\pi} \int_{0}^{\pi} \bigg(\dfrac{e^{jt} - e^{-jt}}{2j} \bigg) e^{-jnt} dt $$
 
@@ -323,7 +321,7 @@ $$C_{-1} = \dfrac{j}{4} $$
 
 $$x(t) = $$
 
-Ahora para el calculo de los coeficientess $a_n$ y $b_n$ simplemente debemos conocer la matriz de
+Ahora para el c\'alculo de los coeficientess $a_n$ y $b_n$ simplemente debemos conocer la matriz de
 cambio de base la cual es $a_0 = C_0$ , $a_n = 2Re(C_n)$ , $b_n = -2Im(C_n)$.
 
 \[
